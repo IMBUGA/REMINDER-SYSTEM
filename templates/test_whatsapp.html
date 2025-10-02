@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h4>Test WhatsApp Messages</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success">
+                    <strong>WhatsApp is MORE RELIABLE than SMS!</strong><br>
+                    Uses free CallMeBot API. Messages should arrive instantly.
+                </div>
+                
+                <form method="POST" action="{{ url_for('test_whatsapp') }}">
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">WhatsApp Number</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" 
+                               value="0797971425" required>
+                        <div class="form-text">Format: 0797971425 (must have WhatsApp activated)</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="test_message" class="form-label">Test Message</label>
+                        <textarea class="form-control" id="test_message" name="test_message" rows="4" required>💊 Medical Reminder System Test
+
+Hello! This is a test message from your new Medical Appointment Reminder System.
+
+If you receive this, WhatsApp messaging is working perfectly! ✅</textarea>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            Send Test WhatsApp
+                        </button>
+                        <a href="{{ url_for('test_sms') }}" class="btn btn-info">Test SMS Instead</a>
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Dashboard</a>
+                    </div>
+                </form>
+                
+                <div class="mt-4">
+                    <h5>Why WhatsApp is Better:</h5>
+                    <ul>
+                        <li>✅ Free to send messages</li>
+                        <li>✅ Instant delivery</li>
+                        <li>✅ High reliability</li>
+                        <li>✅ Rich formatting support</li>
+                        <li>✅ No carrier restrictions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

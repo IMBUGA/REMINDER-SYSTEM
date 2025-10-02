@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Send Reminders</h2>
+
+<form action="{{ url_for('send_reminders') }}" method="GET">
+    <p><strong>Manual Reminder Trigger</strong></p>
+    <p>This will send SMS reminders for appointments happening tomorrow 
+    that haven't had reminders sent yet.</p>
+
+    <button type="submit">Send Reminders Now</button>
+    <a href="{{ url_for('test_sms') }}">Test SMS</a>
+</form>
+
+{% if results %}
+<div>
+    <h3>Reminder Results ({{ results|selectattr('reminder_sent')|list|length }} successful)</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Appointment ID</th>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Patient SMS</th>
+                <th>Doctor SMS</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.appointment_id }}</td>
+                <td>{{ result.patient_name }}<br>{{ result.patient_phone }}</td>
+                <td>{{ result.doctor_name }}<br>{{ result.doctor_phone }}</td>
+                <td>
+                    {% if result.whatsapp_patient_success %}
+                        Sent
+                    {% else %}
+                        Failed
+                    {% endif %}
+                </td>
+                <td>
+                    {% if result.whatsapp_doctor_success %}
+                        Sent
+                    {% else %}
+                        Failed
+                    {% endif %}
+                </td>
+                <td>
+                    {% if result.reminder_sent %}
+                        Completed
+                    {% else %}
+                        Partial
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

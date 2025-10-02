@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>All Appointments</h2>
+<a href="{{ url_for('add_appointment') }}">Add New Appointment</a>
+
+{% if appointments %}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Patient</th>
+            <th>Patient Phone</th>
+            <th>Doctor</th>
+            <th>Doctor Phone</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Reminder Sent</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for apt in appointments %}
+        <tr>
+            <td>{{ apt[0] }}</td>
+            <td>{{ apt[1] }}</td>
+            <td>{{ apt[2] }}</td>
+            <td>{{ apt[3] }}</td>
+            <td>{{ apt[4] }}</td>
+            <td>{{ apt[5] }}</td>
+            <td>{{ apt[6] }}</td>
+            <td>
+                {% if apt[7] %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
+            </td>
+            <td>
+                <a href="{{ url_for('delete_appointment', appointment_id=apt[0]) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No appointments found. Add your first appointment!</p>
+{% endif %}
+{% endblock %}

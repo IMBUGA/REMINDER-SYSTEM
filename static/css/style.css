@@ -1,0 +1,215 @@
+/* Samsung One UI Inspired - Glossy Glassmorphism */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent */
+    backdrop-filter: blur(10px); /* Glossy blur */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+button, input[type="submit"] {
+    background: #007AFF; /* One UI blue */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #005BB5;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .card {
+        border-radius: 15px;
+        padding: 15px;
+    }
+    table {
+        font-size: 14px;
+    }
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Glowing alerts */
+.alert-success {
+    background: rgba(52, 199, 89, 0.2); /* Green accent */
+    backdrop-filter: blur(5px);
+    border: 1px solid #34C759;
+    color: #34C759;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(52, 199, 89, 0.3); /* Glow */
+}
+
+.alert-error {
+    background: rgba(255, 59, 48, 0.2);
+    backdrop-filter: blur(5px);
+    border: 1px solid #FF3B30;
+    color: #FF3B30;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 59, 48, 0.3);
+}
+
+.alert-info {
+    background: rgba(0, 122, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border: 1px solid #007AFF;
+    color: #007AFF;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 122, 255, 0.3);
+}
+
+.alert-warning {
+    background: rgba(255, 204, 0, 0.2);
+    backdrop-filter: blur(5px);
+    border: 1px solid #FFCC00;
+    color: #FFCC00;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+}
+
+/* Form and list styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    margin: 0 10px;
+}
+
+.appointments-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.appointment-list {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.appointment-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.appointment-list li {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+nav {
+    background: #007AFF;
+    color: white;
+    padding: 10px;
+}
+
+nav h1 {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul {
+    display: inline;
+    list-style: none;
+}
+
+nav li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Authentication tabs */
+.auth-tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tab-button.active {
+    background: #007AFF;
+    color: white;
+}

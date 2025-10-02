@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-warning">
+                <h4>Send Test Reminder Immediately</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <strong>This bypasses the date check and sends immediately</strong><br>
+                    Use this to test if reminders are working.
+                </div>
+                
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" 
+                               value="0797971425" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="test_message" class="form-label">Test Message</label>
+                        <textarea class="form-control" id="test_message" name="test_message" rows="3" required>Test reminder sent immediately from system!</textarea>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-warning">
+                            🚀 Send Immediate Test Reminder
+                        </button>
+                        <a href="{{ url_for('send_reminders') }}" class="btn btn-primary">Check Real Reminders</a>
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Dashboard</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

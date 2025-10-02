@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Appointment Dashboard</h2>
+
+<div class="stats">
+    <div class="stat-card">
+        <h3>{{ total_appointments }}</h3>
+        <p>Total Appointments</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>{{ today_appointments|length }}</h3>
+        <p>Today's Appointments</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>{{ tomorrow_appointments|length }}</h3>
+        <p>Tomorrow's Appointments</p>
+    </div>
+</div>
+
+<div class="appointments-section">
+    <div class="appointment-list">
+        <h3>Today's Appointments</h3>
+        {% if today_appointments %}
+            <ul>
+                {% for apt in today_appointments %}
+                <li>
+                    {{ apt[1] }} with Dr. {{ apt[3] }}<br>
+                    Time: {{ apt[6] }}<br>
+                    WhatsApp: 
+                        {% if apt[8] == 1 %}
+                            ✅ Sent
+                        {% else %}
+                            ⏳ Pending
+                        {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No appointments for today.</p>
+        {% endif %}
+    </div>
+
+    <div class="appointment-list">
+        <h3>Tomorrow's Appointments</h3>
+        {% if tomorrow_appointments %}
+            <ul>
+                {% for apt in tomorrow_appointments %}
+                <li>
+                    {{ apt[1] }} with Dr. {{ apt[3] }}<br>
+                    Time: {{ apt[6] }}<br>
+                    Phone: {{ apt[2] }}
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No appointments for tomorrow.</p>
+        {% endif %}
+    </div>
+</div>
+
+<div>
+    <a href="{{ url_for('add_appointment') }}">Add New Appointment</a>
+    <a href="{{ url_for('send_reminders') }}">Send Reminders</a>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>MedReminder</title> 
+</head>
+<body>
+    {% if session.get('logged_in') %}
+    <nav>
+        <h1>MedReminder</h1>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('add_appointment') }}">Add Appointment</a></li>
+            <li><a href="{{ url_for('view_appointments') }}">All Appointments</a></li>
+            <li><a href="{{ url_for('send_reminders') }}">Send Reminders</a></li>
+            <li><a href="{{ url_for('test_whatsapp') }}">Test WhatsApp</a></li>
+            <li><a href="{{ url_for('test_sms') }}">Test SMS</a></li>
+            <li><a href="{{ url_for('send_test_reminder') }}">Test Reminder</a></li>
+            <li><a href="{{ url_for('manage_staff') }}">Manage Staff</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    {% endif %}
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="card">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

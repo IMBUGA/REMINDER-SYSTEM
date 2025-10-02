@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h4>Test WhatsApp Messages</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success">
+                    <strong>✅ API Key Configured!</strong><br>
+                    Your WhatsApp API key is active. Messages should work perfectly now!
+                </div>
+                
+                <form method="POST" action="{{ url_for('test_whatsapp') }}">
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">Your WhatsApp Number</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" 
+                               value="0797971425" required>
+                        <div class="form-text">Using API Key: 7722049</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="test_message" class="form-label">Test Message</label>
+                        <textarea class="form-control" id="test_message" name="test_message" rows="3" required>🚀 Test from Medical Reminder System with API Key! ✅</textarea>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            Test WhatsApp with API Key
+                        </button>
+                        <a href="{{ url_for('test_sms') }}" class="btn btn-primary">Test SMS Instead</a>
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Dashboard</a>
+                    </div>
+                </form>
+                
+                <div class="mt-4 alert alert-info">
+                    <strong>Expected Result:</strong> You should receive the WhatsApp message instantly!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

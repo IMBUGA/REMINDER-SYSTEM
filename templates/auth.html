@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>MedReminder Authentication</h2>
+
+<div class="auth-tabs">
+    <button onclick="showTab('login')" class="tab-button active">Sign In</button>
+    <button onclick="showTab('signup')" class="tab-button">Sign Up</button>
+</div>
+
+<div id="login" class="auth-tab">
+    <h3>Sign In</h3>
+    <form method="POST">
+        <input type="hidden" name="action" value="login">
+        <div class="form-group">
+            <label for="login-username">Username</label>
+            <input type="text" id="login-username" name="username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit">Sign In</button>
+        <p><a href="{{ url_for('reset_password_request') }}">Forgot Password?</a></p>
+    </form>
+</div>
+
+<div id="signup" class="auth-tab" style="display: none;">
+    <h3>Sign Up</h3>
+    <form method="POST">
+        <input type="hidden" name="action" value="signup">
+        <div class="form-group">
+            <label for="signup-username">Username</label>
+            <input type="text" id="signup-username" name="username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+<script>
+function showTab(tabName) {
+    document.querySelectorAll('.auth-tab').forEach(tab => tab.style.display = 'none');
+    document.getElementById(tabName).style.display = 'block';
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`button[onclick="showTab('${tabName}')"]`).classList.add('active');
+}
+</script>
+
+<style>
+.auth-tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+.tab-button.active {
+    background: #007AFF;
+    color: white;
+}
+</style>
+{% endblock %}
